@@ -89,11 +89,11 @@ class FaveProfile extends Component {
   }
 
   render() {
-    let pathCheck = window.location.pathname;
+    let pathCheck = this.props.location.pathname;
     const p = "/Users/" + this.props.users.name;
     pathCheck = pathCheck.replace("%20", " ");
-    console.log(pathCheck);
-    console.log(p);
+    console.log('pathCheck', pathCheck);
+    console.log('p', p);
 
     const { match, location, history } = this.props;
 
@@ -135,11 +135,4 @@ class FaveProfile extends Component {
     );
   }
 }
-
-export default compose(
-  withRouter(FaveProfile),
-  connect(
-    null,
-    { removeFave }
-  )(FaveProfile)
-);
+export default connect(null, { removeFave })(withRouter(FaveProfile))
